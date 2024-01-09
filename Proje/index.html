@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Türkiye Hava Kalitesi Haritası</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .bar {
+            width: 1000px;
+            height: 50px;
+            background-color: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            position: fixed;
+            bottom: 10px;
+            /* Sayfanın en altından 10 piksel yüksekliğinde */
+            right: 10px;
+            /* Sayfanın en sağından 10 piksel genişlikte */
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: calc(100% / 6);
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #content-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #content1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #27ae60;
+            margin-left: 30px;
+
+        }
+
+        #info-icon {
+
+            width: 20px;
+            height: 20px;
+            background-color: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            margin-left: -390px;
+            /* Sola kaydırma miktarı */
+            margin-bottom: 0px;
+            /* Aşağıya kaydırma miktarı */
+        }
+
+
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 500px;
+            margin-bottom: 10px;
+        }
+
+        #locateBtn {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            margin-left: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+            /* Sağ kenar boşluğu ekleniyor */
+        }
+
+        #locateBtn:hover {
+            background-color: #2980b9;
+        }
+
+        #downloadBtn {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            margin-left: 10px;
+            background-color: #2ecc71;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        #downloadBtn:hover {
+            background-color: #27ae60;
+        }
+
+        div.flex-container {
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+        }
+
+        img {
+            width: 400px;
+            height: 100px;
+            margin-left: auto;
+            display: block;
+            margin-right: 10px;
+        }
+        html{
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,41,121,1) 0%, rgba(0,212,255,1) 69%);
+        }
+    </style>
+     <style>
+        .leaflet-div-icon {
+            background: transparent;
+            border: none;
+        }
+
+        .leaflet-div-icon i {
+            display: block;
+            margin: -12px auto;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <a href="#hava-kalitesi">Hava Kalitesi</a>
+        <a href="https://www.greenpeace.org/turkey/" target="_blank">Haberler</a>
+ 
+        <a href="grafikler.html">Hava Kalitesi Nedir?</a>
+    </nav>
+
+    <div id="map"></div>
+    <div class="flex-container">
+        <div id="gif">
+        <button id="locateBtn">Konumumu Bul</button>
+        <button id="downloadBtn">Veriyi İndir</button>
+        </div>
+        
+        <p></p>
+        <img s alt="">
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+    <script src="script2.js"></script>
+    <script>
+        // İndirme butonuna tıklanınca çalışacak fonksiyon
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            // Dosyayı indir
+            saveToFile(fileContent);
+        });
+    </script>
+    
+    <script>
+        function showInfo() {
+            // Burada info işareti tıklandığında yapılacak işlemleri ekleyebilirsiniz.
+            alert('Bu bir bilgi mesajıdır.');
+        }
+    </script>
+    <div class="bar">
+        <div class="section" style="background-color: #00ff00;">İyi<br>0 - 50</div>
+        <div class="section" style="background-color: #ffff00;">Orta<br>50 - 100</div>
+        <div class="section" style="background-color: #ffa500;">Hassas<br>100 - 150</div>
+        <div class="section" style="background-color: #ff0000;">Sağlıksız<br>150 - 200</div>
+        <div class="section" style="background-color: #8b0000;">Kötü<br>200 – 300</div>
+        <div class="section" style="background-color: #800080;">Tehlikeli<br>300 – 500</div>
+    </div>
+</body>
+
+</html>
