@@ -98,7 +98,7 @@ const cities = [
     { name: 'Düzce', coordinates: [40.8438, 31.1565] }
 ];
 
-const apiKey = '25ac8214037d6d40f7da1414b0460fc705133811'; // AQICN'den  API anahtarı
+const apiKey = ''; // AQICN'den  API anahtarı
 
 
 // Renk stratejisi için arayüz
